@@ -24,12 +24,9 @@ function Snake(){
         // Move the snake
         this.tailX.unshift(this.tailX[0] += dirX * pixelWidth);
         this.tailY.unshift(this.tailY[0] += dirY * pixelWidth);
-        
         this.tailX.pop();
         this.tailY.pop();
-        /*this.x += dirX * pixelWidth;
-        this.y += dirY * pixelWidth;
-        */
+        
     }
     
     this.growTail = function(){
@@ -40,7 +37,12 @@ function Snake(){
     
     // Called every frame by main draw function, check to see if snake hits itself
     this.checkCollision = function(){
-        
+        for (var i = 1; i < this.tailLength; i++){
+            if (this.tailX[0] === this.tailX[i] && this.tailY[0] === this.tailY[i]){
+                // Game over
+                gameState = 3;
+            }
+        }
     }
     
     // Called every frame by main draw function, displays snake

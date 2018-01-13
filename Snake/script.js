@@ -1,6 +1,9 @@
 //General setup for game
 var pixelWidth = 20;
 var frameRateMultiplier = 5;
+var gameState = 1;
+var score = 0;
+var difficulty = prompt("Enter your preferred difficulty, 1 = easy, 2 = medium, 3 = hard", "2");
 
 // These variables are the parameters passed into snake.move()
 var moveX = 1;
@@ -9,16 +12,15 @@ var moveY = 0;
 // Objects
 var snake;
 var food;
-
-// Score
-var score = 0;
+var gui;
 
 function setup() {
     createCanvas(1280, 720);
-    var difficulty = prompt("Enter your preferred difficulty, 1 = easy, 2 = medium, 3 = hard", "2");
-    frameRate(parseInt(difficulty, 10) * frameRateMultiplier);
+    difficulty = parseInt(difficulty, 10);
+    frameRate(difficulty * frameRateMultiplier);
     snake = new Snake();
     food = new Food();
+    gui = new Gui();
     food.randomPos();
 }
 
@@ -29,7 +31,17 @@ function draw() {
     snake.show();
     snake.checkCollision();
     food.show();
+    gui.inGame();
     checkIfEaten();
+    /*else if (gameState === 2){
+        snake.show();
+        food.show();
+        gui.pause();
+    } else if (gameState === 3){
+        snake.show();
+        food.show();
+        gui.gameOver();
+    }*/
 }
 
 // To check if arrow keys are pressed, changing the direction of snake
@@ -57,8 +69,7 @@ function keyPressed(){
     }
     // To pause the game
     if (keyCode === ENTER){
-        moveX = 0;
-        moveY = 0;
+        gameState === 2;
     }
 }
 
