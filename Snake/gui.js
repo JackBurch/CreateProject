@@ -3,10 +3,23 @@ function Gui(){
     // When game first loads and gameState === 0
     this.beginning = function (){
         fill(255);
+        
         var title = "SNAKE";
+        var start = "START";
+        var difficulty = "DIFFICULTY";
+        var diffDown = "<";
+        var diffUp = ">";
+        
         textFont("Calibri");
-        textSize(72);
+        textSize(96);
         text(title, (width - textWidth(title))/2, height/3);
+        
+        textSize(48);
+        text(start, (width - textWidth(start))/2, height/3 + 2 * textAscent(title));
+        
+        text(difficulty, (width - textWidth(difficulty))/2, height/3 + 2 * textAscent(title) + 1.2 * textAscent(start));
+        
+        text(diffDown, (width - textWidth(difficulty))/2 - textWidth(diffDown) - 20, height/3 + 2 * textAscent(title) + 1.2 * textAscent(start))
         
     }
     

@@ -20,7 +20,7 @@ function Snake(){
     }
     
     // Movement of snake in x and y directions
-    this.move = function(dirX, dirY){
+    this.move = function(){
         
         // Display positions of the snake's body parts.
         for (var i = 0; i < this.tailLength; i++){
@@ -28,10 +28,10 @@ function Snake(){
         }
         
         // Move the snake
-        this.tailX.unshift(this.tailX[0] += dirX * pixelWidth);
-        this.tailY.unshift(this.tailY[0] += dirY * pixelWidth);
-        //this.tailX.pop();
-        //this.tailY.pop();
+        this.tailX.unshift(this.tailX[0] += moveX * pixelWidth);
+        this.tailY.unshift(this.tailY[0] += moveY * pixelWidth);
+        this.tailX.pop();
+        this.tailY.pop();
         
     }
     

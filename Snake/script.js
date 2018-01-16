@@ -1,7 +1,7 @@
 //General setup for game
 var pixelWidth = 20;
 var frameRateMultiplier = 5;
-var gameState = 1;
+var gameState = 0;
 var score = 0;
 var difficulty = prompt("Enter your preferred difficulty, 1 = easy, 2 = medium, 3 = hard", "2");
 var pauseCounter = 0;
@@ -28,11 +28,11 @@ function setup() {
 
 // Runs every frame
 function draw() {
+    background(51);
     if (gameState === 0){
         gui.beginning();
     } else if (gameState === 1){
-        background(51);
-        snake.move(moveX, moveY);
+        snake.move();
         snake.show();
         snake.checkCollision();
         food.show();
@@ -51,22 +51,22 @@ function draw() {
 
 // To check if arrow keys are pressed, changing the direction of snake
 function keyPressed(){
-    if (keyCode === RIGHT_ARROW){
+    if (keyCode === RIGHT_ARROW && (keyCode != UP_ARROW || keyCode != DOWN_ARROW)){
         if (moveX != -1){
             moveX = 1;
             moveY = 0;
         }
-    } else if (keyCode === LEFT_ARROW){
+    } else if (keyCode === LEFT_ARROW && (keyCode != UP_ARROW || keyCode != DOWN_ARROW)){
         if (moveX != 1){
             moveX = -1;
             moveY = 0;
         }
-    } else if (keyCode === UP_ARROW){
+    } else if (keyCode === UP_ARROW && (keyCode != RIGHT_ARROW || keyCode != LEFT_ARROW)){
         if (moveY != 1){
             moveY = -1;
             moveX = 0;
         }
-    } else if (keyCode === DOWN_ARROW){
+    } else if (keyCode === DOWN_ARROW && (keyCode != RIGHT_ARROW || keyCode != LEFT_ARROW)){
         if (moveY != -1){
             moveY = 1;
             moveX = 0;
@@ -86,6 +86,16 @@ function keyPressed(){
     
 }
 
+/*function mouseClicked() {
+    // Different buttons for different game states
+    
+    // Game state 0, main menu
+    if (gameState === 0){
+        if (mouseX >= (width - textWidth("START"))/2 && mouseX <= (width + textWidth("START"))/2 && mouseY >= (height/3 + textAscent("START"))/2 && mouseX <= (width + textWidth("START"))/2){
+            
+        }
+    }
+*/
 // If the (x, y) of snake and food are the same, the food is eaten, spawned in a new place, and score is added
 function checkIfEaten(){
     if (snake.tailX[0] === food.x && snake.tailY[0] === food.y){
