@@ -5,9 +5,10 @@ var a = 0;
 var yPos = 200;
 var di = 30;
 var on = false;
-var colorChange = true;
+
 var rectDi = 100;
 var started = false;
+
 function setup () {
     createCanvas(1280, 720);
 }
@@ -27,9 +28,7 @@ function draw (){
     yPos = d;
     
   }
-  if (colorChange == true){
-    fill(r,g,b);
-  }
+fill(r,g,b);
   rect(xPos, yPos,di, di);
   xPos=xPos+xDir;
   if (xPos>width-di || xPos<0)
@@ -64,6 +63,7 @@ function intro(){
     
     
 }
+
 
 function rect2(){
     fill(255, 179, 71)
