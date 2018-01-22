@@ -1,9 +1,9 @@
 //General setup for game
 var pixelWidth = 20;
 var frameRateMultiplier = 5;
-var gameState = 0;
+var gameState = 1;
 var score = 0;
-var difficulty = prompt("Enter your preferred difficulty, 1 = easy, 2 = medium, 3 = hard", "2");
+var difficulty = 2;
 var pauseCounter = 0;
 
 // These variables are the parameters passed into snake.move()
@@ -18,7 +18,6 @@ var gui;
 function setup() {
     createCanvas(1280, 720);
     difficulty = parseInt(difficulty, 10);
-    frameRate(difficulty * frameRateMultiplier);
     snake = new Snake();
     food = new Food();
     gui = new Gui();
@@ -28,6 +27,7 @@ function setup() {
 
 // Runs every frame
 function draw() {
+    frameRate(difficulty * frameRateMultiplier);
     background(51);
     if (gameState === 0){
         gui.beginning();
@@ -86,16 +86,22 @@ function keyPressed(){
     
 }
 
-/*function mouseClicked() {
+function mouseClicked() {
     // Different buttons for different game states
     
     // Game state 0, main menu
     if (gameState === 0){
-        if (mouseX >= (width - textWidth("START"))/2 && mouseX <= (width + textWidth("START"))/2 && mouseY >= (height/3 + textAscent("START"))/2 && mouseX <= (width + textWidth("START"))/2){
+        /*if (mouseX >= (width - textWidth("START"))/2 && mouseX <= (width + textWidth("START"))/2 && mouseY <= height/3 + 2 * textAscent("START") && mouseY >= height/3 + 3 * textAscent("START")){
+            textSize(48);
+            gameState = 1;
+        }*/
+        
+        if (1 === 0) {
             
         }
     }
-*/
+}
+
 // If the (x, y) of snake and food are the same, the food is eaten, spawned in a new place, and score is added
 function checkIfEaten(){
     if (snake.tailX[0] === food.x && snake.tailY[0] === food.y){
