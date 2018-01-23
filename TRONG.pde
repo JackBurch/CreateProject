@@ -1,22 +1,22 @@
-float x, y, speedX, speedY;
-float diam = 10;
-float rectSize = 200;
-PImage img;  
-PImage title;
-void setup() {
+var x, y, speedX, speedY;
+var diam = 10;
+var rectSize = 200;
+var img;  
+var title;
+function setup() {
 img = loadImage("TRONG BALLLLLLL.png");
 title = loadImage("title middle final.png");
 size(1300,750);
 
 reset();}
-void reset() {
+function reset() {
 x = width/2;
 y = height/2;
 speedX = random(4, 6);
 speedY = random(4, 6);
 }
 
-void draw() { 
+function draw() { 
   
   background(0,150,255);
   image(title, 450,300);
@@ -38,6 +38,10 @@ void draw() {
 if ( y > height-75 || y < 0+60 ) {
 speedY *= -1;
 }
+}
+
+function mousePressed() {
+  reset();
 }
 
 void mousePressed() {
