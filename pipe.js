@@ -1,6 +1,6 @@
 function Pipe() {
-    this.top = random(height/2);
-    this.bottom = random(height/2);
+    this.top = random(0, height/2);
+    this.bottom = random(0, height/2);
     this.x = width;
     this.W = 20;
     this.speed = 2;
@@ -14,7 +14,7 @@ function Pipe() {
     
     this.show = function() {
         fill(225);
-        rect(this.x, 0,this.w, this.top);
+        rect(this.x, 0, this.w, this.top);
         rect(this.x, height-this.bottom, this.w, this.bottom);
     }
 
