@@ -7,6 +7,19 @@ function setup() {
 }
 
 function draw() {
+    for(var i = 0; i < pipes.length-1; i++){
+        pipes[i].show();
+        pipes[i].update();
+        
+        if (pipes[i].hits(bird)) {
+            console.log("SHIT!");
+        }
+        if (pipes[i].offscreen()){
+           pipes.splice(i,1);
+        } 
+        
+    }
+    
     background(0);
     bird.update();  
     bird.show(); 
@@ -15,13 +28,7 @@ function draw() {
         pipes.push(new Pipe());
     }
     
-    for(var i = 0; i < pipes.length-1; i >= 0; i--){
-        pipes{i}.show();
-        pipes{i}.update();
-        if (pipes[i].offscreen()){
-           pipes.splice(i,1); 
-        }
-    }
+    
 }
  
 function keyPressed(){
@@ -30,5 +37,3 @@ function keyPressed(){
         //console.log("SPACE")
     }
 }
-
- 

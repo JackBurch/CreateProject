@@ -28,6 +28,6 @@ function Bird(){
         if (this.y < 0){
             this.y = 0;
             this.veocity = 0;  
+        }
     }
 }
-   
