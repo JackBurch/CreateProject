@@ -25,8 +25,19 @@ function Gui(){
         text(title, (width - textWidth(title))/2, height/3);
         
         textSize(48);
+        
+        if (menuSelected === 0){
+            fill(211, 84, 0);
+        } else {
+            fill(255);
+        }
         text(start, (width - textWidth(start))/2, height/3 + 2 * textAscent(title));
         
+        if (menuSelected === 1){
+            fill(211, 84, 0);
+        } else {
+            fill(255);
+        }
         text(diffText, (width - textWidth(diffText))/2, diffHeight);
         
         text(diffDown, (width - textWidth(diffText))/2 - textWidth(diffDown) - 20, diffHeight);
@@ -37,12 +48,13 @@ function Gui(){
     
     // While the game is being played, gameState === 1
     this.inGame = function (){
-        score += difficulty;
+        score ++;
         fill(255);
         noStroke();
         var scoreText = "Score: " + score.toString();
+        textSize(36);
         textFont("Calibri");
-        text(scoreText, width - textWidth(scoreText) - 10, 10);
+        text(scoreText, width - textWidth(scoreText) - 10, textAscent(scoreText));
     }
     
     // While the game is paused, gameState === 2
@@ -57,7 +69,17 @@ function Gui(){
         text(pauseTitle, (width - textWidth(pauseTitle))/2, height/4);
         
         textSize(48);
+        if (pauseSelected === 0){
+            fill(211, 84, 0);
+        } else {
+            fill(255);
+        }
         text(resume, (width - textWidth(resume))/2, height/4 + 1.2 * textAscent(pauseTitle));
+        if (pauseSelected === 1){
+            fill(211, 84, 0);
+        } else {
+            fill(255);
+        }
         text(menu, (width - textWidth(menu))/2, height/4 + 2.4 * textAscent(menu));
     }
     

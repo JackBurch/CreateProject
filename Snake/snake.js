@@ -1,19 +1,18 @@
 function Snake(){
     
     // Initial setup of snake
-    this.x = width/2 - 10;
-    this.y = height/2 - 10;
+    this.x = width/2 - pixelWidth/2;
+    this.y = height/2 - pixelWidth/2;
     this.tailLength = 1;
     this.initialTailLength = 4;
     
     this.tailX = new Array(this.tailLength);
     this.tailY = new Array(this.tailLength);
     
-    this.tailX[0] = width/2 - pixelWidth/2;
-    this.tailY[0] = height/2 - pixelWidth/2;
-    
     // Generate tail
     this.generateTail = function(){
+        this.tailX[0] = this.x;
+        this.tailY[0] = this.y;
         for (var i = 1; i < this.initialTailLength; i++){
             this.growTail();
         }
@@ -48,6 +47,18 @@ function Snake(){
                 // Game over
                 gameState = 3;
             }
+        }
+        
+        if (this.tailX[0] > width){
+            this.tailX[0] = -pixelWidth/2;
+        } else if (this.tailX[0] < 0){
+            this.tailX[0] = width + pixelWidth/2;
+        }
+        
+        if (this.tailY[0] > height){
+            this.tailY[0] = -pixelWidth/2;
+        } else if (this.tailY[0] < 0){
+            this.tailY[0] = height + pixelWidth/2;
         }
     }
     
