@@ -85,6 +85,32 @@ function Gui(){
     
     // After the game is over, game state === 3
     this.gameOver = function(){
+        fill(255);
+        var endTitle = "GAME OVER";
+        var scoreLabel = "YOUR SCORE";
+        var scoreText = score.toString();
+        
+        var playAgain = "PLAY AGAIN";
+        var menuText = "MENU";
+        
+        textSize(72);
+        text(endTitle, (width - textWidth(endTitle))/2, height/4);
+        textSize(64);
+        text(scoreLabel, (width - textWidth(scoreLabel))/2, height/3 + textAscent(endTitle));
+        text(scoreText, (width - textWidth(scoreText))/2, height/3 + textAscent(endTitle) + 1.1 * textAscent(scoreLabel));
+        textSize(48);
+        if (endSelected === 0){
+            fill(211, 84, 0);
+        } else {
+            fill(255);
+        }
+        text(playAgain, (width - textWidth(playAgain))/2, 3 * height/5);
+        if (endSelected === 1){
+            fill(211, 84, 0);
+        } else {
+            fill(255);
+        }
+        text(menuText, (width - textWidth(menuText))/2, 3 * height/5 + 1.2 * textAscent(playAgain));
         
     }
 }

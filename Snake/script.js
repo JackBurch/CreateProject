@@ -4,10 +4,9 @@ var frameRateMultiplier = 10;
 var gameState = 0;
 var score = 0;
 var difficulty = 2;
-var pauseCounter = 0;
 var menuSelected = 0;
 var pauseSelected = 0;
-
+var endSelected = 0;
 
 // These variables are the parameters passed into snake.move()
 var moveX = 1;
@@ -155,9 +154,29 @@ function keyReleased(){
     }
     
     if (gameState === 3) {
+        if (keyCode === DOWN_ARROW) {
+            if (endSelected != 1) {
+                endSelected++;
+            } else {
+                endSelected = 0;
+            }
+        } else if (keyCode === UP_ARROW) {
+            if (endSelected != 0) {
+                endSelected--;
+            } else {
+                endSelected = 1;
+            }
+        }
+        
         if (keyCode === ENTER) {
-            gameState = 0;
-            resetGame();
+            if (endSelected === 0) {
+                gameState = 1;
+                resetGame();
+            } else if (endSelected === 1) {
+                gameState = 0;
+                resetGame();
+            }
+            
         }
     }
     
