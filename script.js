@@ -5,7 +5,7 @@ var a = 0;
 var yPos = 200;
 var di = 30;
 var on = false;
-
+var img;
 var rectDi = 100;
 var started = false;
 
@@ -60,8 +60,7 @@ function intro(){
     fill(0);
     text("Welcome to Bounce 3", 300, height/3);
     text("Start", 565, height -height/3 - 25);
-    
-    
+      
 }
 
 
